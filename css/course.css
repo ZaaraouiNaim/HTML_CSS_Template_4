@@ -1,0 +1,65 @@
+.parent {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.parent::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 4px solid;
+    border-color: blue transparent transparent;
+    z-index: -1;
+}
+
+.parent:hover::before {
+    animation: loading 1s infinite linear;
+}
+
+
+.child {
+    width: 100px;
+    height: 20px;
+    border: 2px solid white;
+    background-image: linear-gradient(to right, white 50%, green 50%);
+    background-position: bottom left;
+    background-size: 200% 100%;
+    transition: 0.3s;
+}
+
+.child:hover {
+    background-position: bottom right;
+}
+
+@keyframes flash {
+
+    0%,
+    40% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        width: 200%;
+        height: 200%;
+    }
+}
+
+@keyframes loading {
+    100% {
+        transform: rotate(1turn);
+    }
+}
